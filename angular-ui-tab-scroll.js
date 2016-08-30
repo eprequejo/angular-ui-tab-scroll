@@ -60,7 +60,8 @@ angular.module('ui.tab.scroll', [])
         return {
           restrict: 'AE',
           transclude: {
-            'content': 'uibTabset'
+            'content': 'uibTabset',
+            'dropdownTabs': 'dropdownTabs'
           },
 
           scope: {
@@ -85,10 +86,7 @@ angular.module('ui.tab.scroll', [])
               ' tooltip-placement="{{tooltipRightDirection}}" uib-tooltip-html="tooltipRightHtml"></button>',
               '<div class="btn-group" uib-dropdown dropdown-append-to-body ng-hide="hideDropDown">',
                 '<button type="button" class="btn" uib-dropdown-toggle></button>',
-                '<ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu">',
-                  '<li role="menuitem" ng-repeat="tab in dropdownTabs" ng-class="{\'disabled\': tab.disabled}" ng-click="activateTab(tab)">',
-                    '<a href><span class="dropDownTabActiveMark" ng-style="{\'visibility\': tab.active?\'visible\':\'hidden\'}"></span>{{tab.tabScrollTitle}}</a>',
-                  '</li>',
+                '<ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu" ng-transclude="dropdownTabs">',
                 '</ul>',
               '</div>',
             '</div>'
