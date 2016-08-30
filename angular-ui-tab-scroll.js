@@ -59,7 +59,9 @@ angular.module('ui.tab.scroll', [])
 
         return {
           restrict: 'AE',
-          transclude: true,
+          transclude: {
+            'content': 'uibTabset'
+          },
 
           scope: {
             showDropDown: '@',
@@ -77,7 +79,7 @@ angular.module('ui.tab.scroll', [])
               '<button type="button" ng-mousedown="scrollButtonDown(\'left\', $event)" ng-mouseup="scrollButtonUp()" ng-hide="hideButtons"' +
               ' ng-disabled="disableLeft" class="btn nav-button left-nav-button"' +
               ' tooltip-placement="{{tooltipLeftDirection}}" uib-tooltip-html="tooltipLeftHtml"></button>',
-              '<div class="spacer" ng-class="{\'hidden-buttons\': hideButtons}" ng-transclude></div>',
+              '<div class="spacer" ng-class="{\'hidden-buttons\': hideButtons}" ng-transclude="content"></div>',
               '<button type="button" ng-mousedown="scrollButtonDown(\'right\', $event)" ng-mouseup="scrollButtonUp()" ng-hide="hideButtons"' +
               ' ng-disabled="disableRight" class="btn nav-button right-nav-button"' +
               ' tooltip-placement="{{tooltipRightDirection}}" uib-tooltip-html="tooltipRightHtml"></button>',
